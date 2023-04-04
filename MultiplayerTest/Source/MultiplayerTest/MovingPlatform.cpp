@@ -27,6 +27,8 @@ void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (ActiveTriggers <= 0) return;
+
 	if (HasAuthority())
 	{
 		FVector Location = GetActorLocation();
@@ -45,4 +47,16 @@ void AMovingPlatform::Tick(float DeltaTime)
 		Location += Direction * Speed * DeltaTime;
 		SetActorLocation(Location);
 	}
+}
+
+void AMovingPlatform::AddActiveTrigger()
+{
+	ActiveTriggers++;
+}
+
+void AMovingPlatform::RemoveActiveTrigger()
+{
+	if (ActiveTriggers <= 0) return;
+
+	ActiveTriggers--;
 }

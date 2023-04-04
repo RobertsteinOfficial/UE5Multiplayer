@@ -20,7 +20,13 @@ public:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 
+	void AddActiveTrigger();
+	void RemoveActiveTrigger();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		int32 ActiveTriggers = 1;
 private:
+
 	UPROPERTY(EditAnywhere)
 		float Speed = 20;
 	UPROPERTY(EditAnywhere, Meta = (MakeEditWidget = true))
